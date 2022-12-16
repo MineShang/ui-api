@@ -1,5 +1,5 @@
 {
-  "name": "@mineshang/test-api",
+  "name": "@mineshang/ui-api",
   "version": "1.1.0",
   "private": true,
   "workspaces": [
