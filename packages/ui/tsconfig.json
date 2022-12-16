@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}

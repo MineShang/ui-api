@@ -1,0 +1,46 @@
+name: Publish npm package
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.12.1'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@${{ github.actor }}'
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      id: pnpm-install
+      with:
+        version: 7
+        run_install: false
+    # - name: Setup pnpm cache
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+    #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-pnpm-store-
+    - name: Install dependencies
+      run: pnpm i
+    - name: Publish packages
+      run: pnpm run publish-packages
+
+  # 没有权限删除 package
+  # clean:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/delete-package-versions@v3
+  #     with:
+  #       package-name: ${{ github.event.repository.name }}
+  #       min-versions-to-keep: 3

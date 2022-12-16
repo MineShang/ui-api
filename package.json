@@ -1,0 +1,27 @@
+{
+  "name": "@mineshang/test-api",
+  "version": "1.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "changeset": "changeset",
+    "version": "turbo run build && changeset version",
+    "publish-packages": "turbo run build && changeset publish"
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@7.18.2",
+  "dependencies": {
+    "@changesets/cli": "^2.25.2"
+  }
+}
