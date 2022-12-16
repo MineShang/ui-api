@@ -1,0 +1,8 @@
+@use "sass:math";
+
+/**
+ * translate ui px to vw
+ */
+@function vw($px) {
+  @return (math.div($px, $ui-width-mobile)) * 100vw;
+}

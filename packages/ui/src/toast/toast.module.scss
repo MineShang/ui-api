@@ -1,0 +1,29 @@
+.toast {
+  position: fixed;
+  z-index: 2101;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: vw(140);
+  height: auto;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+  padding: vw(14);
+  box-sizing: border-box;
+  font-size: vw(16);
+  color: #ffffff;
+  line-height: vw(26);
+  transition: opacity 0.3s;
+  @include layout-tablet {
+    line-height: 26px;
+    font-size: 16px;
+    padding: 20px;
+    width: 280px;
+  }
+}
+
+.toastVisible {
+  opacity: 1;
+}
